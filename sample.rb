@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Sample class
 class Sample
   def add
