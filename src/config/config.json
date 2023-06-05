@@ -1,0 +1,9 @@
+{
+    "LogFilePath": "./logs/combined.log",
+    "PlatinumTicketPrice": 320,
+    "GoldTicketPrice": 280,
+    "SilverTicketPrice": 240,
+    "serviceTax": 14,
+    "swatchBharatCess": 0.5,
+    "krishiKalyanCess": 0.5
+}
