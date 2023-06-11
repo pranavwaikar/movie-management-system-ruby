@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'colorize'
 require './src/common/logger'
 require './src/controller/shows_controller'
@@ -47,7 +49,6 @@ class View
   def take_seat_input
     Log.instance.info 'Enter seat numbers to book (e.g. A1,A2): '
     selected_seats = gets.chomp.upcase.strip
-    processed_seat = []
     if selected_seats.include?(',')
       selected_seats.split(',').map(&:chomp).map(&:strip)
     else

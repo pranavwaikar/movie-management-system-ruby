@@ -2,12 +2,13 @@
 
 require './src/model/tables/screen'
 require './src/model/tables/seat'
-require './src/model/tables/seatCategory'
+require './src/model/tables/seat_category'
 require './src/model/tables/show'
 require './src/model/tables/booking'
 require './src/config/config_loader'
 require './src/controller/bookings_controller'
 
+# This is like a DB interface which contains DB related routines
 class Database
   @@seat_category = SeatCategory.new
   @@screens = Screen.new
@@ -33,6 +34,15 @@ class Database
 
   def self.BOOKINGS
     @@bookings
+  end
+
+  # Delete all the database entries
+  def self.truncate
+    @@seat_category.truncate
+    @@screens.truncate
+    @@seats.truncate
+    @@shows.truncate
+    @@bookings.truncate
   end
 
   def self.seed

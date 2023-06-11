@@ -2,6 +2,7 @@
 
 require './src/model/repository/repository'
 
+# This is an application level interface for repository
 class Model
   def initialize
     @model_store = Repository.new
@@ -33,5 +34,9 @@ class Model
 
   def delete(id)
     @model_store.delete(id)
+  end
+
+  def truncate
+    @model_store.truncate
   end
 end

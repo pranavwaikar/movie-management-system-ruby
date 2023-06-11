@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This is the inmoemory storage implementation for repository interface
 class InMemoryStorage
   def initialize
     @users = []
@@ -46,5 +47,9 @@ class InMemoryStorage
 
   def delete(id)
     @users.delete_at(find_index_by_id(id))
+  end
+
+  def truncate
+    @users = []
   end
 end

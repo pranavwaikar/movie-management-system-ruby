@@ -9,7 +9,7 @@ task :lint do
 end
 
 task :test do
-  system('RAILS_ENV=test bundle exec rspec spec/**/**.rb')
+  system('RAILS_ENV=test bundle exec rspec --pattern "./spec/**/*_test.rb" ')
 end
 
 task :start do

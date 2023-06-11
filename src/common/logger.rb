@@ -4,6 +4,7 @@ require 'logger'
 require 'colorize'
 require './src/config/config_loader'
 
+# This is a logger implementation in a singleton pattern
 class Log
   def initialize
     @logger = Logger.new(ConfigLoader.instance.get_attribute('LogFilePath'))

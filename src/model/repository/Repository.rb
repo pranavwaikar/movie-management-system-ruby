@@ -2,6 +2,7 @@
 
 require './src/model/repository/in_memory_storage'
 
+# This is ainterface for interfaction with storage medium
 class Repository
   def initialize(storage = InMemoryStorage.new)
     @storage = storage
@@ -33,5 +34,9 @@ class Repository
 
   def delete(id)
     @storage.delete(id)
+  end
+
+  def truncate
+    @storage.truncate
   end
 end

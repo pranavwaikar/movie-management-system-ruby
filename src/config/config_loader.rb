@@ -2,6 +2,7 @@
 
 require 'json'
 
+# This is an interface to interact with the configuration layer
 class ConfigLoader
   def initialize
     file = File.read('./src/config/config.json')

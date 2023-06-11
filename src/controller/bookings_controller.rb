@@ -9,7 +9,7 @@ require './src/config/config_loader'
 # Handels the bookings related activities
 class BookingsController
   def create(show_id, seat_id)
-    if is_seat_available(show_id, seat_id)
+    if seat_available?(show_id, seat_id)
       base_price = calculate_base_price(seat_id)
       service_tax = calculate_service_tax(base_price)
       swatch_bharat_cess = calculate_swatch_bharat_cess(base_price)
@@ -27,21 +27,25 @@ class BookingsController
   def show(id)
     result = Database.BOOKINGS.find(id)
 
-    {
-      show: Database.SHOWS.find(result[:show_id]),
-      seat: Database.SEATS.find(result[:seat_id]),
-      subtotal: result[:base_price],
-      service_tax_percentage: ConfigLoader.instance.get_attribute('serviceTax'),
-      swachh_bharat_cess_percentage: ConfigLoader.instance.get_attribute('swatchBharatCess'),
-      krishikalyan_cess_percentage: ConfigLoader.instance.get_attribute('krishiKalyanCess'),
-      service_tax: result[:service_tax],
-      swachh_bharat_cess: result[:swachh_bharat_cess],
-      krishikalyan_cess: result[:krishikalyan_cess],
-      total_price: result[:total_price]
-    }
+    if result
+      return {
+        show: Database.SHOWS.find(result[:show_id]),
+        seat: Database.SEATS.find(result[:seat_id]),
+        subtotal: result[:base_price],
+        service_tax_percentage: ConfigLoader.instance.get_attribute('serviceTax'),
+        swachh_bharat_cess_percentage: ConfigLoader.instance.get_attribute('swatchBharatCess'),
+        krishikalyan_cess_percentage: ConfigLoader.instance.get_attribute('krishiKalyanCess'),
+        service_tax: result[:service_tax],
+        swachh_bharat_cess: result[:swachh_bharat_cess],
+        krishikalyan_cess: result[:krishikalyan_cess],
+        total_price: result[:total_price]
+      }
+    end
+
+    -1
   end
 
-  def is_seat_available(show_id, seat_id)
+  def seat_available?(show_id, seat_id)
     seat_map = ShowsController.new.get_available_seats(show_id)
     target_seat = seat_map.find { |seat| seat[:id] == seat_id }
 
@@ -55,15 +59,15 @@ class BookingsController
   end
 
   def calculate_service_tax(base_price)
-    (base_price / 100) * ConfigLoader.instance.get_attribute('serviceTax')
+    (base_price / 100) * ConfigLoader.instance.get_attribute('serviceTax') if base_price.is_a? Numeric
   end
 
   def calculate_krishi_kalyan_cess(base_price)
-    (base_price / 100) * ConfigLoader.instance.get_attribute('krishiKalyanCess')
+    (base_price / 100) * ConfigLoader.instance.get_attribute('krishiKalyanCess') if base_price.is_a? Numeric
   end
 
   def calculate_swatch_bharat_cess(base_price)
-    (base_price / 100) * ConfigLoader.instance.get_attribute('swatchBharatCess')
+    (base_price / 100) * ConfigLoader.instance.get_attribute('swatchBharatCess') if base_price.is_a? Numeric
   end
 
   def get_revenue_stats

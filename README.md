@@ -49,6 +49,7 @@ rake test
 - The design schema is - model - view - controller. 
 - The model is based on repository pattern. 
 - The model imitates feature like table, primary and foregin keys, automatic ID assignment.
+- Check the ER diagram in the docs folder for DB design.
 - The controller uses model to add business logic over models.
 - The view uses controllers to facilitate business tranasactions. 
 - The logger stores all the statements plus provide features like colorized printing.
@@ -76,6 +77,8 @@ Here we are using a repository pattern for creating a data model. We have a repo
 In this current implementation, we are using in-memory storage. But if we want to use any database, we can just implement a new class with & implement repository interface methods for that database. This means our data model can be used without worrying about underlying architectural complexity. 
 
 On top of repository, we have a `Model` which can hold some application specific operations if needed. The rest of the data model entities can inherit this class & this provides an abstraction layer above the repository.
+
+For detailed design of data model, please check the ER diagram at -  `docs/ER Diagram.png`
 
 ### Database Interface
 

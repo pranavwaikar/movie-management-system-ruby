@@ -1,14 +1,17 @@
-require './src/view/View'
+# frozen_string_literal: true
+
+require './src/view/view'
 require './src/model/database/database'
 
-RSpec.configure do |config|
-  config.before(:all) do
-    # Code to call the database seed method
+RSpec.describe View do
+  before(:all) do
     Database.seed
   end
-end
 
-RSpec.describe View do
+  after(:all) do
+    Database.truncate
+  end
+
   let(:view) { View.new }
 
   describe '#take_seat_input' do
