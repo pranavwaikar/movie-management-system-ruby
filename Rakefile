@@ -5,7 +5,7 @@ task :lint do
 end
 
 task :test do
-  system('RAILS_ENV=test bundle exec rspec spec/sample_test.rb')
+  system('RAILS_ENV=test bundle exec rspec spec/**.rb')
 end
 
 task :start do

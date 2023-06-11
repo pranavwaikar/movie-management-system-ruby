@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/Database/Database'
+require './src/model/database/database'
 
 # Handels the shows related activities
 class ShowsController

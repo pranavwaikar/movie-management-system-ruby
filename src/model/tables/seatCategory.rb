@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/repository/Model'
+require './src/model/repository/model'
 
 class SeatCategory < Model
   def create(seat_category, price)

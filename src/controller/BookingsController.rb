@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/Database/Database'
+require './src/model/database/database'
 require './src/controller/SeatsController'
 require './src/controller/ShowsController'
 require './src/controller/BookingsController'

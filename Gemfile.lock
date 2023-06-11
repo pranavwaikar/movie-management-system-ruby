@@ -3,6 +3,7 @@ GEM
   specs:
     ast (2.4.2)
     awesome_print (1.9.2)
+    colorize (0.8.1)
     diff-lcs (1.5.0)
     json (2.6.3)
     logger (1.5.3)
@@ -46,6 +47,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  colorize
   logger
   rspec
   rubocop

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/repository/Repository'
+require './src/model/repository/repository'
 
 class Model
   def initialize

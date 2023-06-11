@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
+require 'colorize'
 require './src/common/logger'
 require './src/controller/ShowsController'
-require './src/model/Database/Database'
+require './src/model/database/database'
 
 # Handels the overall view
 class View
@@ -20,6 +19,7 @@ class View
     Log.instance.info(seats.join(' '))
   end
 
+  # print the seating chart for a specific show 
   def show_seating_chart(show_id)
     show = Database.SHOWS.find(show_id)
     screen = Database.SCREENS.find(show[:screen_id])
@@ -37,21 +37,23 @@ class View
     print_category_row(silver)
   end
 
+  # For every show print the seating chart
   def show_all_seating_charts
     shows = Database.SHOWS.all
     shows.each { |show| show_seating_chart(show[:id]) }
   end
 
+  # Ask for seat selection
   def take_seat_input
-    # Ask for seat selection
     Log.instance.info 'Enter seat numbers to book (e.g. A1,A2): '
-    selected_seats = gets.chomp.upcase
-
+    selected_seats = gets.chomp.upcase.strip
     if selected_seats.include?(',')
-      selected_seats.split(',').map(&:chomp)
+      selected_seats = selected_seats.split(',').map(&:chomp).map(&:strip)
     else
-      [selected_seats]
+      selected_seats = [selected_seats]
     end
+
+    selected_seats
   end
 
   def print_booking_info(booking_id)

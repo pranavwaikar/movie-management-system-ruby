@@ -6,6 +6,8 @@ require './src/model/tables/seatCategory'
 require './src/model/tables/show'
 require './src/model/tables/booking'
 require './src/config/configLoader'
+require './src/controller/BookingsController'
+
 
 class Database
   @@seat_category = SeatCategory.new
@@ -96,5 +98,7 @@ class Database
     @@shows.create('show 3', '10 Feb 2020', '06:00 PM', 3) # AUDI 3
 
     # create a booking - show_id, seat_id, base_price, service_tax, swachh_bharat_cess, krishikalyan_cess, total_price
+    BookingsController.new.create(1, 1)
+
   end
 end

@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'awesome_print'
 gem 'logger'
+gem 'colorize'
 gem 'rubocop', require: false
 
 group :development do

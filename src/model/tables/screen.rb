@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/repository/Model'
+require './src/model/repository/model'
 
 class Screen < Model
   def create(name)

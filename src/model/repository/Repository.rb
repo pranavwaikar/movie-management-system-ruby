@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './src/model/repository/InMemoryStorage'
+require './src/model/repository/in_memory_storage'
 
 class Repository
   def initialize(storage = InMemoryStorage.new)
