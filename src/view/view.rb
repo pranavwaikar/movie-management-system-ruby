@@ -1,6 +1,6 @@
 require 'colorize'
 require './src/common/logger'
-require './src/controller/ShowsController'
+require './src/controller/shows_controller'
 require './src/model/database/database'
 
 # Handels the overall view
@@ -19,7 +19,7 @@ class View
     Log.instance.info(seats.join(' '))
   end
 
-  # print the seating chart for a specific show 
+  # print the seating chart for a specific show
   def show_seating_chart(show_id)
     show = Database.SHOWS.find(show_id)
     screen = Database.SCREENS.find(show[:screen_id])
@@ -47,13 +47,12 @@ class View
   def take_seat_input
     Log.instance.info 'Enter seat numbers to book (e.g. A1,A2): '
     selected_seats = gets.chomp.upcase.strip
+    processed_seat = []
     if selected_seats.include?(',')
-      selected_seats = selected_seats.split(',').map(&:chomp).map(&:strip)
+      selected_seats.split(',').map(&:chomp).map(&:strip)
     else
-      selected_seats = [selected_seats]
+      [selected_seats]
     end
-
-    selected_seats
   end
 
   def print_booking_info(booking_id)

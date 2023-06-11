@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require './src/model/database/database'
-require './src/controller/SeatsController'
-require './src/controller/ShowsController'
-require './src/controller/BookingsController'
-require './src/config/configLoader'
+require './src/controller/seats_controller'
+require './src/controller/shows_controller'
+require './src/controller/bookings_controller'
+require './src/config/config_loader'
 
 # Handels the bookings related activities
 class BookingsController

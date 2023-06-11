@@ -2,7 +2,7 @@
 
 require 'logger'
 require 'colorize'
-require './src/config/configLoader'
+require './src/config/config_loader'
 
 class Log
   def initialize

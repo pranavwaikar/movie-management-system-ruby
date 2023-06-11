@@ -5,9 +5,8 @@ require './src/model/tables/seat'
 require './src/model/tables/seatCategory'
 require './src/model/tables/show'
 require './src/model/tables/booking'
-require './src/config/configLoader'
-require './src/controller/BookingsController'
-
+require './src/config/config_loader'
+require './src/controller/bookings_controller'
 
 class Database
   @@seat_category = SeatCategory.new
@@ -99,6 +98,5 @@ class Database
 
     # create a booking - show_id, seat_id, base_price, service_tax, swachh_bharat_cess, krishikalyan_cess, total_price
     BookingsController.new.create(1, 1)
-
   end
 end
