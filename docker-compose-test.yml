@@ -1,0 +1,21 @@
+version: '2.18.1'
+services:
+  ruby-run-tests:
+    container_name: "movie-booking-system-ruby"
+    image: ruby:3.2
+    stdin_open: true 
+    tty: true
+    volumes:
+      - type : bind
+        source: .
+        target: /app
+    working_dir: /app
+    environment:
+      - TEST_ENV=${TEST_ENV:-test}
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ls
+        bundle install
+        rake test

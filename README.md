@@ -20,6 +20,16 @@ After a succcessful dependency installation, you can run :
 rake start
 ````
 
+## Docker run
+
+1. Install docker in your system
+2. To run unit tests - `rake docker_test`
+3. To run the code & interact via bash - `rake docker_run`. If successful you will be inside containers bash. 
+4. Now install dependencies and run the code - `bundle install && rake start`
+5. After you are done, you can exit the container by - `exit`
+6. Now we need to clean up the running container so run - `rake docker_stop`
+
+
 # Linting
 
 It uses rubocop as a linter & can be triggered with rake tasks.
